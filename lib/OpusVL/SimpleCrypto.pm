@@ -52,7 +52,7 @@ sub decrypt
 
 =head1 NAME
 
-OpusVL::SimpleCrypto - Very simple encyption methods.
+OpusVL::SimpleCrypto - Very simple encryption methods.
 
 =head1 DESCRIPTION
 
