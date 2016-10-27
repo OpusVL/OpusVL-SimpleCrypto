@@ -68,6 +68,9 @@ Simple encrypt and decrypt methods.
 This uses Crypt::Sodium under the hood to do simple symetric (authenticated)
 encryption and decryption.
 
+On debian derivative systems you probably need to install the libsodium-dev
+package.
+
 =head1 METHODS
 
 =head2 GenerateKey
