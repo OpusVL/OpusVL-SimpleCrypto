@@ -35,3 +35,5 @@ nytprof.out
 *.o
 *.bs
 /_eumm/
+
+OpusVL-SimpleCrypto-*
