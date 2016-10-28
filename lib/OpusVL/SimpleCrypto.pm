@@ -140,7 +140,7 @@ Use the key_string method to get the key out in a format useful for storing.
 
 Encrypt text.
 
-The cipher text should have these properties,
+The method should have these properties,
 
 =over
 
@@ -175,6 +175,8 @@ decrypting first.
 This method allows more potential attacks than the data encrypted by
 encrypt, so only use it where necessary.
 
+This method has the following properties,
+
 =over
 
 =item * Encrpyting the same thing with the same key *should* produce the same result.
@@ -184,6 +186,8 @@ encrypt, so only use it where necessary.
 =item * The ciphertext is not malleable.
 
 It should not be possible to modify it to generate a different plain text.
+
+=item * It is slower than the encrypt method.
 
 =back
 
