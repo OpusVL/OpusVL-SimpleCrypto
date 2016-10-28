@@ -92,9 +92,9 @@ Simple encrypt and decrypt methods.
     my $ct2 = $s->encrypt_deterministic('Test');
 
 
-    my $crypto = OpusVL::SimpleCrypto->new({ 
-        key_string => $key_string 
-        deterministic_salt_string => $deterministic_salt_string 
+    my $crypto = OpusVL::SimpleCrypto->new({
+        key_string => $key_string
+        deterministic_salt_string => $deterministic_salt_string
     });
     my $message = $crypto->decrypt($ct);
     my $message2 = $crypto->decrypt($ct2);
@@ -103,7 +103,7 @@ This uses Crypt::Sodium under the hood to do simple symmetric (authenticated)
 encryption and decryption.
 
 This is for storing information encrypted in a database.  Make sure the key
-is not in the database at the same time, otherwise this all becomes a bit 
+is not in the database at the same time, otherwise this all becomes a bit
 academic.
 
 On debian derivative systems you probably need to install the libsodium-dev
@@ -116,12 +116,12 @@ to display it to the user, use encrypt.  It's more secure and will allow
 the data to be stored as securely as a piece of software can.
 
 If you need to look up an exact value, for example the value is a key
-on the row, use encrypt_deterministic.  This means that you can 
+on the row, use encrypt_deterministic.  This means that you can
 encrypt_deterministic the search value, and then search the database
 without needing to decrypt any of the data.
 
 If you want to search for text within an encrypted value, this library
-won't cut it.  You'll need to look for searchable encryption.  This 
+won't cut it.  You'll need to look for searchable encryption.  This
 normally involves indexes outside the main corpus that are also encrypted,
 but having some determinism while hopefully not leaking too much
 information.  It requires some serious engineering, and is generally
@@ -131,7 +131,7 @@ really hard to do right.
 
 =head2 GenerateKey
 
-Create a key and salt and then return new OpusVL::SimpleCrypto initialized 
+Create a key and salt and then return new OpusVL::SimpleCrypto initialized
 with it.
 
 Use the key_string method to get the key out in a format useful for storing.
@@ -148,7 +148,7 @@ The cipher text should have these properties,
 
 =item * Encrypting a very similar value should not produce a similar ciphertext.
 
-=item * The ciphertext is not malleable.  
+=item * The ciphertext is not malleable.
 
 It should not be possible to modify it to generate a different plain text.
 
@@ -181,7 +181,7 @@ encrypt, so only use it where necessary.
 
 =item * Encrypting a very similar value should not produce a similar ciphertext.
 
-=item * The ciphertext is not malleable.  
+=item * The ciphertext is not malleable.
 
 It should not be possible to modify it to generate a different plain text.
 
