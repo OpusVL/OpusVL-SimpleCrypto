@@ -2,6 +2,10 @@ Revision history for OpusVL-SimpleCrypto
 
 {{ $NEXT }}
 
+0.003     2016-10-28 08:57:34+01:00 Europe/London
+
+  - Minor pod tweaks.
+
 0.002     2016-10-28 08:53:43+01:00 Europe/London
 
   - Added new deterministic encryption methods to allow
