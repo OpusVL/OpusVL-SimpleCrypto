@@ -92,7 +92,7 @@ Simple encrypt and decrypt methods.
     my $crypto = OpusVL::SimpleCrypto->new({ key_string => $key_string });
     my $message = $crypto->decrypt($ct);
 
-This uses Crypt::Sodium under the hood to do simple symetric (authenticated)
+This uses Crypt::Sodium under the hood to do simple symmetric (authenticated)
 encryption and decryption.
 
 This is for storing information encrypted in a database.  Make sure the key
@@ -153,7 +153,7 @@ Choosing when to use encrypt or encrypt_deterministic.
 
 If you are simply storing a value securely, and will simply retrieve it
 to display it to the user, use encrypt.  It's more secure and will allow
-the data to be stored as securely as a peice of software can.
+the data to be stored as securely as a piece of software can.
 
 If you need to look up an exact value, for example the value is a key
 on the row, use encrypt_deterministic.  This means that you can 
