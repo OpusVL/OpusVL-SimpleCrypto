@@ -87,10 +87,17 @@ Simple encrypt and decrypt methods.
 
     my $s = OpusVL::SimpleCrypto->GenerateKey;
     print $s->key_string, "\n";
+    print $s->deterministic_salt_string, "\n";
     my $ct = $s->encrypt('Test');
+    my $ct2 = $s->encrypt_deterministic('Test');
 
-    my $crypto = OpusVL::SimpleCrypto->new({ key_string => $key_string });
+
+    my $crypto = OpusVL::SimpleCrypto->new({ 
+        key_string => $key_string 
+        deterministic_salt_string => $deterministic_salt_string 
+    });
     my $message = $crypto->decrypt($ct);
+    my $message2 = $crypto->decrypt($ct2);
 
 This uses Crypt::Sodium under the hood to do simple symmetric (authenticated)
 encryption and decryption.
@@ -102,11 +109,30 @@ academic.
 On debian derivative systems you probably need to install the libsodium-dev
 package.
 
+=head2 Choosing when to use encrypt or encrypt_deterministic.
+
+If you are simply storing a value securely, and will simply retrieve it
+to display it to the user, use encrypt.  It's more secure and will allow
+the data to be stored as securely as a piece of software can.
+
+If you need to look up an exact value, for example the value is a key
+on the row, use encrypt_deterministic.  This means that you can 
+encrypt_deterministic the search value, and then search the database
+without needing to decrypt any of the data.
+
+If you want to search for text within an encrypted value, this library
+won't cut it.  You'll need to look for searchable encryption.  This 
+normally involves indexes outside the main corpus that are also encrypted,
+but having some determinism while hopefully not leaking too much
+information.  It requires some serious engineering, and is generally
+really hard to do right.
+
 =head1 METHODS
 
 =head2 GenerateKey
 
-Create a key and return new OpusVL::SimpleCrypto initialized with it.
+Create a key and salt and then return new OpusVL::SimpleCrypto initialized 
+with it.
 
 Use the key_string method to get the key out in a format useful for storing.
 
@@ -119,6 +145,8 @@ The cipher text should have these properties,
 =over
 
 =item * Encrpyting the same thing with the same key should not produce the same result.
+
+=item * Encrypting a very similar value should not produce a similar ciphertext.
 
 =item * The ciphertext is not malleable.  
 
@@ -149,23 +177,13 @@ encrypt, so only use it where necessary.
 
 =over
 
-Choosing when to use encrypt or encrypt_deterministic.
+=item * Encrpyting the same thing with the same key *should* produce the same result.
 
-If you are simply storing a value securely, and will simply retrieve it
-to display it to the user, use encrypt.  It's more secure and will allow
-the data to be stored as securely as a piece of software can.
+=item * Encrypting a very similar value should not produce a similar ciphertext.
 
-If you need to look up an exact value, for example the value is a key
-on the row, use encrypt_deterministic.  This means that you can 
-encrypt_deterministic the search value, and then search the database
-without needing to decrypt any of the data.
+=item * The ciphertext is not malleable.  
 
-If you want to search for text within an encrypted value, this library
-won't cut it.  You'll need to look for searchable encryption.  This 
-normally involves indexes outside the main corpus that are also encrypted,
-but having some determinism while hopefully not leaking too much
-information.  It requires some serious engineering, and is generally
-really hard to do right.
+It should not be possible to modify it to generate a different plain text.
 
 =back
 
@@ -176,6 +194,12 @@ not decrypt, and the function will return undef instead.
 
 =head1 ATTRIBUTES
 
+Either set the string values, or the raw binary values, you don't need
+to try setting all 4 at once.  Pick 2.
+
+If you want to generate new info for a fresh configuration construct
+an object with them populated with the GenerateKey constructor.
+
 =head2 key_string
 
 The key in a text friendly format.
@@ -183,5 +207,15 @@ The key in a text friendly format.
 =head2 key
 
 The key in binary.
+
+=head2 deterministic_salt_string
+
+This is the salt used for deterministic encrpytion in a text friendly format.
+
+This is required for the L<encrypt_deterministic> function.
+
+=head2 deterministic_salt
+
+This is the binary of the salt used for deterministic encrpytion.
 
 =cut
