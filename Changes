@@ -2,6 +2,11 @@ Revision history for OpusVL-SimpleCrypto
 
 {{ $NEXT }}
 
+0.004     2016-11-01 14:44:37+00:00 Europe/London
+
+  - Added a quick one liner to print off a new set of keys to the pod
+  - Add a test that ensures we can do the fundamental thing that needs to be done
+
 0.003     2016-10-28 08:57:34+01:00 Europe/London
 
   - Minor pod tweaks.
