@@ -136,6 +136,10 @@ with it.
 
 Use the key_string method to get the key out in a format useful for storing.
 
+You could run a quick command to print off some newly generated keys like this,
+
+    perl -MOpusVL::SimpleCrypto -e '$k = OpusVL::SimpleCrypto->GenerateKey; printf("Key: %s\nSalt: %s\n", $k->key_string, $k->deterministic_salt_string)'
+
 =head2 encrypt
 
 Encrypt text.
