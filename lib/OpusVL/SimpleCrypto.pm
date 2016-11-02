@@ -1,6 +1,8 @@
 use strictures 2;
 package OpusVL::SimpleCrypto;
 
+# ABSTRACT: Very simple encryption methods.
+
 use Moo;
 use Crypt::Sodium;
 use MIME::Base64;
@@ -76,10 +78,6 @@ sub decrypt
 
 
 1;
-
-=head1 NAME
-
-OpusVL::SimpleCrypto - Very simple encryption methods.
 
 =head1 DESCRIPTION
 
