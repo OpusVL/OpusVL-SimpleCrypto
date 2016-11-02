@@ -2,6 +2,10 @@ Revision history for OpusVL-SimpleCrypto
 
 {{ $NEXT }}
 
+0.005     2016-11-02 16:03:32+00:00 Europe/London
+
+  - Public release of module to CPAN.
+
 0.004     2016-11-01 14:44:37+00:00 Europe/London
 
   - Added a quick one liner to print off a new set of keys to the pod
