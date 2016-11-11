@@ -2,6 +2,10 @@ Revision history for OpusVL-SimpleCrypto
 
 {{ $NEXT }}
 
+0.007     2016-11-11 07:03:58+00:00 Europe/London
+
+  - Added missing dependency
+
 0.006     2016-11-02 16:45:30+00:00 Europe/London
 
   - Getting the public release with a new release plugin sorted.
