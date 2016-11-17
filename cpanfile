@@ -1,5 +1,3 @@
-requires 'strictures' => 2;
-
 requires 'Moo';
 requires 'Crypt::Sodium';
 requires 'MIME::Base64';

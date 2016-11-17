@@ -1,4 +1,5 @@
-use strictures 2;
+use strict;
+use warnings;
 package OpusVL::SimpleCrypto;
 
 # ABSTRACT: Very simple encryption methods.
