@@ -8,7 +8,7 @@ use Moo;
 use Crypt::Sodium;
 use MIME::Base64;
 
-our $VERSION = '0.008';
+our $VERSION = '0.009';
 
 has key_string => (is => 'rw', lazy => 1, builder => '_build_key_string');
 has key => (is => 'ro', lazy => 1, builder => '_build_key');
